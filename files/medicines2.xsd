@@ -10,15 +10,15 @@
   <element name="medicines">
     <complexType>
       <sequence>
-        <element ref="tns:Medicine" maxOccurs="unbounded"/>
+        <element ref="tns:medicine" maxOccurs="unbounded"/>
       </sequence>
     </complexType>
   </element>
 
   <element name="medicine" type="tns:Medicine" abstract="true"/>
-  <element name="antibiotics" type="tns:Antibiotics" substitutionGroup="tns:Medicine"/>
-  <element name="vitamins" type="tns:Vitamins" substitutionGroup="tns:Medicine"/>
-  <element name="painkiller" type="tns:Painkiller" substitutionGroup="tns:Medicine"/>
+  <element name="antibiotics" type="tns:Antibiotics" substitutionGroup="tns:medicine"/>
+  <element name="vitamins" type="tns:Vitamins" substitutionGroup="tns:medicine"/>
+  <element name="painkiller" type="tns:Painkiller" substitutionGroup="tns:medicine"/>
 
   <complexType name="Medicine">
     <sequence>
