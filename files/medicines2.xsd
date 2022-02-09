@@ -10,7 +10,7 @@
   <element name="medicines">
     <complexType>
       <sequence>
-        <element ref="tns:medicine" maxOccurs="unbounded"/>
+        <element ref="tns:Medicine" maxOccurs="unbounded"/>
       </sequence>
     </complexType>
   </element>
