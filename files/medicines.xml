@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<medicines
+  xmlns="http://www.pharm.by/shop/medicines"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.pharm.by/shop/medicines medicines2.xsd">
+
+  <antibiotics id="a4">
+    <name>Amoxicillin</name>
+    <manufacturer>Bayer</manufacturer>
+    <certificate>
+      <issue-date>16.02.2020</issue-date>
+      <expiry-date>12.03.2023</expiry-date>
+    </certificate>
+    <dosage-form>tablet</dosage-form>
+    <package>
+      <package-type>blister</package-type>
+      <amount>20</amount>
+      <price>12.50</price>
+    </package>
+    <dosage>1 tablet every 8 hours</dosage>
+  </antibiotics>
+</medicines>
