@@ -5,7 +5,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.pharm.by/shop/medicines medicines2.xsd">
 
-  <antibiotics id="a4">
+  <antibiotics id="4a">
     <name>Amoxicillin</name>
     <manufacturer>Bayer</manufacturer>
     <certificate>
@@ -20,4 +20,5 @@
     </package>
     <dosage>1 tablet every 8 hours</dosage>
   </antibiotics>
-</medicines>
+
+ </medicines>
