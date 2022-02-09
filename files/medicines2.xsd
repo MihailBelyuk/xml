@@ -15,12 +15,12 @@
     </complexType>
   </element>
 
-  <element name="medicine" type="tns:medicine" abstract="true"/>
-  <element name="antibiotics" type="tns:antibiotics" substitutionGroup="tns:medicine"/>
-  <element name="vitamins" type="tns:vitamins" substitutionGroup="tns:medicine"/>
-  <element name="painkiller" type="tns:painkiller" substitutionGroup="tns:medicine"/>
+  <element name="medicine" type="tns:Medicine" abstract="true"/>
+  <element name="antibiotics" type="tns:Antibiotics" substitutionGroup="tns:medicine"/>
+  <element name="vitamins" type="tns:Vitamins" substitutionGroup="tns:medicine"/>
+  <element name="painkiller" type="tns:Painkiller" substitutionGroup="tns:medicine"/>
 
-  <complexType name="medicine">
+  <complexType name="Medicine">
     <sequence>
       <element name="name">
         <simpleType>
@@ -109,9 +109,9 @@
     </restriction>
   </simpleType>
 
-  <complexType name="=antibiotics">
+  <complexType name="=Antibiotics">
     <complexContent>
-      <extension base="tns:medicine">
+      <extension base="tns:Medicine">
         <sequence>
           <element name="activity-spectrum">
             <simpleType>
@@ -128,9 +128,9 @@
     </complexContent>
   </complexType>
 
-  <complexType name="vitamins">
+  <complexType name="Vitamins">
     <complexContent>
-      <extension base="tns:medicine">
+      <extension base="tns:Medicine">
         <sequence>
           <element name="solubility">
             <simpleType>
@@ -146,9 +146,9 @@
     </complexContent>
   </complexType>
 
-  <complexType name="painkiller">
+  <complexType name="Painkiller">
     <complexContent>
-      <extension base="tns:medicine">
+      <extension base="tns:Medicine">
         <sequence>
           <element name="origin">
             <simpleType>
