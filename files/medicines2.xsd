@@ -16,9 +16,9 @@
   </element>
 
   <element name="medicine" type="tns:Medicine" abstract="true"/>
-  <element name="antibiotics" type="tns:Antibiotics" substitutionGroup="tns:medicine"/>
-  <element name="vitamins" type="tns:Vitamins" substitutionGroup="tns:medicine"/>
-  <element name="painkiller" type="tns:Painkiller" substitutionGroup="tns:medicine"/>
+  <element name="antibiotics" type="tns:Antibiotics" substitutionGroup="tns:Medicine"/>
+  <element name="vitamins" type="tns:Vitamins" substitutionGroup="tns:Medicine"/>
+  <element name="painkiller" type="tns:Painkiller" substitutionGroup="tns:Medicine"/>
 
   <complexType name="Medicine">
     <sequence>
