@@ -1,4 +1,4 @@
-package com.belyuk.second_project;
+package com.belyuk.second_project.handler;
 
 import com.belyuk.second_project.entity.Antibiotics;
 import com.belyuk.second_project.entity.Medicine;

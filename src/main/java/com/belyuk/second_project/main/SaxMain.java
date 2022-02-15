@@ -1,21 +1,10 @@
-package com.belyuk.second_project;
+package com.belyuk.second_project.main;
 
 import com.belyuk.second_project.builder.MedicineSaxBuilder;
 
 public class SaxMain {
 
   public static void main(String[] args) {
-//    SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-//    try {
-//      SAXParser saxParser = saxParserFactory.newSAXParser();
-//      XMLReader xmlReader = saxParser.getXMLReader();
-//      xmlReader.setContentHandler(new ConsoleMedicineHandler());
-//      xmlReader.parse("files/medicines.xml");
-//    } catch (ParserConfigurationException e) {
-//      e.printStackTrace();
-//    } catch (SAXException | IOException e) {
-//      e.printStackTrace();
-//    }
     MedicineSaxBuilder medicineSaxBuilder = new MedicineSaxBuilder();
     medicineSaxBuilder.buildSetMedicines("files/medicines.xml");
     System.out.println(medicineSaxBuilder.getMedicine());

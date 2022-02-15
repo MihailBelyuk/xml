@@ -1,7 +1,7 @@
 package com.belyuk.second_project.builder;
 
-import com.belyuk.second_project.MedicineErrorHandler;
-import com.belyuk.second_project.MedicineHandler;
+import com.belyuk.second_project.handler.MedicineErrorHandler;
+import com.belyuk.second_project.handler.MedicineHandler;
 import com.belyuk.second_project.entity.Medicine;
 import java.io.IOException;
 import java.util.Set;

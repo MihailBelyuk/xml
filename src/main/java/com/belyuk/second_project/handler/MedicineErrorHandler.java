@@ -1,4 +1,4 @@
-package com.belyuk.second_project;
+package com.belyuk.second_project.handler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
