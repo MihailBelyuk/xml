@@ -30,7 +30,7 @@ public class MedicineStaxBuilder {
     return medicineSet;
   }
 
-  public void buildSetMedicines(String filename, MedicinesXmlTag) {
+  public void buildSetMedicines(String filename) {
     XMLStreamReader reader;
     String name;
     try (FileInputStream inputStream = new FileInputStream(filename)) {
