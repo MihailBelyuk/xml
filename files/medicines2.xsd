@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <schema
-
+  xlmns="http://www.w3.org/2001/XMLSchema"
   targetNamespace="http://www.pharm.by/shop/medicines"
   xmlns:tns="http://www.pharm.by/shop/medicines"
   elementFormDefault="qualified">
@@ -29,21 +29,16 @@
           </restriction>
         </simpleType>
       </element>
-      <element name="manufacturer">
-        <simpleType>
-          <restriction base="string">
-          </restriction>
-        </simpleType>
-      </element>
+      <element name="manufacturer" type="string"/>
       <element name="certificate">
         <complexType>
           <sequence>
-            <element name="issue-date">
+            <element name="issue_date">
               <simpleType>
                 <restriction base="date"/>
               </simpleType>
             </element>
-            <element name="expiry-date">
+            <element name="expiry_date">
               <simpleType>
                 <restriction base="date"/>
               </simpleType>
@@ -51,7 +46,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="dosage-form">
+      <element name="dosage_form">
         <simpleType>
           <restriction base="string">
             <enumeration value="tablet"/>
@@ -63,7 +58,7 @@
       <element name="package">
         <complexType>
           <sequence>
-            <element name="package-type">
+            <element name="package_type">
               <simpleType>
                 <restriction base="string">
                   <enumeration value="blister"/>
@@ -123,7 +118,6 @@
             </simpleType>
           </element>
         </sequence>
-        <attribute name="serial" use="required" type="tns:SerialNumber"/>
       </extension>
     </complexContent>
   </complexType>

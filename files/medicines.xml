@@ -9,16 +9,65 @@
     <name>Amoxicillin</name>
     <manufacturer>Bayer</manufacturer>
     <certificate>
-      <issue-date>16.02.2020</issue-date>
-      <expiry-date>12.03.2023</expiry-date>
+      <issue_date>16.02.2020</issue_date>
+      <expiry_date>12.03.2023</expiry_date>
     </certificate>
-    <dosage-form>tablet</dosage-form>
+    <dosage_form>tablet</dosage_form>
     <package>
-      <package-type>blister</package-type>
+      <package_type>blister</package_type>
       <amount>20</amount>
       <price>12.50</price>
     </package>
     <dosage>1 tablet every 8 hours</dosage>
   </antibiotics>
 
- </medicines>
+  <vitamins id="56a" serial="6652662">
+    <name>Vitamin D3</name>
+    <manufacturer>BioTech USA</manufacturer>
+    <certificate>
+      <issue_date>30.07.2019</issue_date>
+      <expiry_date>30.07.2023</expiry_date>
+    </certificate>
+    <dosage_form>tablet</dosage_form>
+    <package>
+      <package_type>bottle</package_type>
+      <amount>30</amount>
+      <price>5.00</price>
+    </package>
+    <dosage>1 tablet 3 times a day</dosage>
+    <solubility>fat-soluble</solubility>
+  </vitamins>
+
+  <painkiller id="5a">
+    <name>Tylenol</name>
+    <manufacturer>Johnson and Johnson Consumer Inc.</manufacturer>
+    <certificate>
+      <issue_date>05.06.2018</issue_date>
+      <expiry_date>05.06.2023</expiry_date>
+    </certificate>
+    <dosage_form>tablet</dosage_form>
+    <package>
+      <package_type>bottle</package_type>
+      <amount>60</amount>
+      <price>10.00</price>
+    </package>
+    <dosage>1 tablet a day</dosage>
+    <origin>synthetic</origin>
+  </painkiller>
+
+  <antibiotics id="89a">
+    <name>L-Optic</name>
+    <manufacturer>S.C. ROMPHARM Company </manufacturer>
+    <certificate>
+      <issue_date>20.02.2020</issue_date>
+      <expiry_date>20.03.2023</expiry_date>
+    </certificate>
+    <dosage_form>drops</dosage_form>
+    <package>
+      <package_type>bottle</package_type>
+      <amount>5</amount>
+      <price>15.00</price>
+    </package>
+    <dosage>3 drops on the conjunctiva 2 times a day</dosage>
+  </antibiotics>
+</medicines>
