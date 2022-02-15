@@ -9,6 +9,7 @@ import org.xml.sax.SAXParseException;
 public class MedicineErrorHandler implements ErrorHandler, org.xml.sax.ErrorHandler {
 
   private static final Logger logger = LogManager.getLogger();
+
   public void warning(SAXParseException e) {
     logger.warn(getLineColumnNumber(e) + "-" + e.getMessage());
   }
@@ -16,11 +17,13 @@ public class MedicineErrorHandler implements ErrorHandler, org.xml.sax.ErrorHand
   public void error(SAXParseException e) {
     logger.error(getLineColumnNumber(e) + " - " + e.getMessage());
   }
+
   public void fatalError(SAXParseException e) {
     logger.fatal(getLineColumnNumber(e) + " - " + e.getMessage());
   }
+
   private String getLineColumnNumber(SAXParseException e) {
-      return e.getLineNumber() + " : " + e.getColumnNumber();
+    return e.getLineNumber() + " : " + e.getColumnNumber();
   }
 
   public void error(String s) {

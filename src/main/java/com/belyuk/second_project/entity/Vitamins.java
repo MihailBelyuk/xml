@@ -1,7 +1,5 @@
 package com.belyuk.second_project.entity;
 
-import java.util.Objects;
-
 public class Vitamins extends Medicine {
 
   private String solubility;

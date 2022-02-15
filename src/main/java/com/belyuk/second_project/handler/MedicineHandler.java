@@ -13,12 +13,10 @@ public class MedicineHandler extends DefaultHandler {
   private Set<Medicine> medicines;
   private Medicine current;
   private MedicinesXmlTag currentXmlTag;
-//  private EnumSet<MedicinesXmlTag> withText;
   private static final String ELEMENT_ANTIBIOTICS = "antibiotics";
 
   public MedicineHandler() {
     medicines = new HashSet<Medicine>();
-//    withText = EnumSet.range(MedicinesXmlTag.NAME, MedicinesXmlTag.MANUFACTURER);
   }
 
   public Set<Medicine> getMedicines() {
@@ -29,14 +27,6 @@ public class MedicineHandler extends DefaultHandler {
     if (ELEMENT_ANTIBIOTICS.equals(qName)) {
       current = new Antibiotics();
       current.setId(attrs.getValue(0));
-//      if (attrs.getLength() == 2) { // warning!!!!
-//        current.setFaculty(attrs.getValue(1));
-//      }
-//    } else {
-//      MedicinesXmlTag temp = MedicinesXmlTag.valueOf(qName.toUpperCase());
-//      if (withText.contains(temp)) {
-//        currentXmlTag = temp;
-//      }
     }
   }
 
@@ -48,17 +38,16 @@ public class MedicineHandler extends DefaultHandler {
 
   public void characters(char[] ch, int start, int length) {
     String data = new String(ch, start, length).strip();
-//    BigDecimal price = new BigDecimal(data);
     if (currentXmlTag != null) {
       switch (currentXmlTag) {
         case NAME -> current.setName(data);
         case MANUFACTURER -> current.setManufacturer(data);
-//        case ISSUE_DATE -> current.setMedCertificateIssueDate(data);
-//        case EXPIRY_DATE -> current.setMedCertificateExpiryDate(data);
+//        case ISSUE_DATE -> current.setMedCertificateIssueDate(data); //TODO
+//        case EXPIRY_DATE -> current.setMedCertificateExpiryDate(data); //TODO
         case DOSAGE_FORM -> current.setDosageForm(data);
         case DOSAGE -> current.setDosage(data);
         case AMOUNT -> current.setAmount(Integer.parseInt(data));
-//        case PRICE -> current.setPrice(price);
+//        case PRICE -> current.setPrice(price); //TODO
         default -> throw new EnumConstantNotPresentException(
             currentXmlTag.getDeclaringClass(), currentXmlTag.name());
       }

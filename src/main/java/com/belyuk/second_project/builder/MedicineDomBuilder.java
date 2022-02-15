@@ -20,7 +20,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class MedicineDomBuilder {
-private Set<Vitamins> vitaminsSet;
+
+  private Set<Vitamins> vitaminsSet;
   private Set<Medicine> medicineSet;
   private DocumentBuilder documentBuilder;
 
@@ -38,12 +39,12 @@ private Set<Vitamins> vitaminsSet;
     return medicineSet;
   }
 
-  public void buildSetMedicine(String filename) {
-    Document document = null;
+  public void buildSetMedicine(String filename, String elementName) {
+    Document document;
     try {
       document = documentBuilder.parse(filename);
       Element root = document.getDocumentElement();
-      NodeList medicineList = root.getElementsByTagName("antibiotics");
+      NodeList medicineList = root.getElementsByTagName(elementName);
       for (int i = 0; i < medicineList.getLength(); i++) {
         Element antibioticsElement = (Element) medicineList.item(i);
         Antibiotics antibiotics = buildAntibiotics(antibioticsElement);

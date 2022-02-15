@@ -1,6 +1,6 @@
 package com.belyuk.second_project.exception;
 
-public class XmlException extends Exception{
+public class XmlException extends Exception {
 
   public XmlException() {
     super();
