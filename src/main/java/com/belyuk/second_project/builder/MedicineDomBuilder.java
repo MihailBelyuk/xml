@@ -97,7 +97,7 @@ public class MedicineDomBuilder {
     vitamins.setId(vitaminsElement.getAttribute(ID));
     vitamins.setDosage(getElementTextContent(vitaminsElement, DOSAGE));
     vitamins.setPrice(getElementBigDecimalContent(vitaminsElement, PRICE));
-    vitamins.setMedCertificateIssueDate(getElementDateContent(vitaminsElement, ISSUE_DATE);
+    vitamins.setMedCertificateIssueDate(getElementDateContent(vitaminsElement, ISSUE_DATE));
     vitamins.setMedCertificateExpiryDate(getElementDateContent(vitaminsElement, EXPIRY_DATE));
     vitamins.setSolubility(getElementTextContent(vitaminsElement, SOLUBILITY));
     vitamins.setSerial(vitaminsElement.getAttribute(SERIAL));
