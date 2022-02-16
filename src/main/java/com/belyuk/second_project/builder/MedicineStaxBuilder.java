@@ -20,6 +20,7 @@ public class MedicineStaxBuilder {
 
   private final Set<Medicine> medicineSet;
   private final XMLInputFactory inputFactory;
+  private static final String DATE_PATTERN = "dd.MM.yyyy";
 
   public MedicineStaxBuilder() {
     inputFactory = XMLInputFactory.newInstance();
@@ -102,7 +103,7 @@ public class MedicineStaxBuilder {
   }
 
   private Date getXMLDate(XMLStreamReader reader) {
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_PATTERN);
     Date date = null;
     try {
       if (reader.hasNext()) {
