@@ -21,7 +21,6 @@ import org.xml.sax.SAXException;
 
 public class MedicineDomBuilder {
 
-  private Set<Vitamins> vitaminsSet;
   private Set<Medicine> medicineSet;
   private DocumentBuilder documentBuilder;
 
