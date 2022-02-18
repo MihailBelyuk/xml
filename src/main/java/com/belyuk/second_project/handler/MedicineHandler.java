@@ -1,7 +1,7 @@
 package com.belyuk.second_project.handler;
 
-import com.belyuk.second_project.entity.Antibiotics;
 import com.belyuk.second_project.entity.Medicine;
+import com.belyuk.second_project.entity.impl.AntibioticsImpl;
 import com.belyuk.second_project.enums.MedicinesXmlTag;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,29 +13,48 @@ public class MedicineHandler extends DefaultHandler {
   private Set<Medicine> medicines;
   private Medicine current;
   private MedicinesXmlTag currentXmlTag;
-  private static final String ELEMENT_ANTIBIOTICS = "antibiotics";
+  private static final String ELEMENT_MEDICINES = "medicines";
+  private static final String ANTIBIOTICS = "antibiotics";
+  private static final String NAME = "name";
+  private static final String MANUFACTURER = "manufacturer";
+  private static final String DOSAGE_FORM = "dosage_form";
+  private static final String AMOUNT = "amount";
+  private static final String ID = "id";
+  private static final String DOSAGE = "dosage";
+  private static final String PRICE = "price";
+  private static final String ISSUE_DATE = "issue_date";
+  private static final String EXPIRY_DATE = "expiry_date";
+  private static final String SOLUBILITY = "solubility";
+  private static final String SERIAL = "serial";
+  private static final String DATE_PATTERN = "dd.MM.yyyy";
+  private static final String VITAMINS = "vitamins";
+
 
   public MedicineHandler() {
-    medicines = new HashSet<Medicine>();
+    medicines = new HashSet<>();
   }
 
   public Set<Medicine> getMedicines() {
     return medicines;
   }
 
+  @Override
   public void startElement(String uri, String localName, String qName, Attributes attrs) {
-    if (ELEMENT_ANTIBIOTICS.equals(qName)) {
-      current = new Antibiotics();
-      current.setId(attrs.getValue(0));
+    if (ANTIBIOTICS.equals(qName)) {
+      current = new AntibioticsImpl();
+      current.setId(attrs.getValue(ID));
+
     }
   }
 
+  @Override
   public void endElement(String uri, String localName, String qName) {
-    if (ELEMENT_ANTIBIOTICS.equals(qName)) {
+    if (ELEMENT_MEDICINES.equals(qName)) {
       medicines.add(current);
     }
   }
 
+  @Override
   public void characters(char[] ch, int start, int length) {
     String data = new String(ch, start, length).strip();
     if (currentXmlTag != null) {

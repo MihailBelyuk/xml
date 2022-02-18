@@ -1,10 +1,9 @@
 package com.belyuk.second_project.builder;
 
-import com.belyuk.second_project.entity.Antibiotics;
+import com.belyuk.second_project.entity.impl.AntibioticsImpl;
 import com.belyuk.second_project.entity.Medicine;
 import com.belyuk.second_project.enums.MedicinesXmlTag;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +23,7 @@ public class MedicineStaxBuilder {
 
   public MedicineStaxBuilder() {
     inputFactory = XMLInputFactory.newInstance();
-    medicineSet = new HashSet<Medicine>();
+    medicineSet = new HashSet<>();
   }
 
   public Set<Medicine> getMedicineSet() {
@@ -46,16 +45,14 @@ public class MedicineStaxBuilder {
           }
         }
       }
-    } catch (XMLStreamException | FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
+    } catch (XMLStreamException | IOException e) {
       e.printStackTrace();
     }
   }
 
   private Medicine buildMedicine(XMLStreamReader reader)
       throws XMLStreamException {
-    Antibiotics antibiotics = new Antibiotics();
+    AntibioticsImpl antibiotics = new AntibioticsImpl();
 
     antibiotics.setId(reader.getAttributeValue(null, MedicinesXmlTag.ID.getValue()));
     antibiotics.setName(reader.getAttributeValue(null,
@@ -65,7 +62,7 @@ public class MedicineStaxBuilder {
     while (reader.hasNext()) {
       int type = reader.next();
       switch (type) {
-        case XMLStreamConstants.START_ELEMENT:
+        case XMLStreamConstants.START_ELEMENT -> {
           name = reader.getLocalName();
           switch (MedicinesXmlTag.valueOf(name.toUpperCase())) {
             case NAME -> antibiotics.setName(getXMLText(reader));
@@ -78,12 +75,13 @@ public class MedicineStaxBuilder {
             case ID -> antibiotics.setId(getXMLText(reader));
 //            case PRICE -> antibiotics.setPrice(getBigDecimalValue(reader)); //TODO
           }
-          break;
-        case XMLStreamConstants.END_ELEMENT:
+        }
+        case XMLStreamConstants.END_ELEMENT -> {
           name = reader.getLocalName();
           if (MedicinesXmlTag.valueOf(name.toUpperCase()) == MedicinesXmlTag.ANTIBIOTICS) {
             return antibiotics;
           }
+        }
       }
     }
     throw new XMLStreamException("Unknown element in tag <antibiotics>");
@@ -110,9 +108,7 @@ public class MedicineStaxBuilder {
         reader.next();
         date = simpleDateFormat.parse(reader.getText());
       }
-    } catch (XMLStreamException e) {
-      e.printStackTrace();
-    } catch (ParseException e) {
+    } catch (XMLStreamException | ParseException e) {
       e.printStackTrace();
     }
     return date;

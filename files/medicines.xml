@@ -19,7 +19,7 @@
       <price>12.50</price>
     </package>
     <dosage>1 tablet every 8 hours</dosage>
-  </antibiotics>
+     </antibiotics>
 
   <vitamins id="56a" serial="6652662">
     <name>Vitamin D3</name>

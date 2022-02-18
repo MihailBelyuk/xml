@@ -1,8 +1,8 @@
 package com.belyuk.second_project.builder;
 
-import com.belyuk.second_project.entity.Antibiotics;
+import com.belyuk.second_project.entity.impl.AntibioticsImpl;
 import com.belyuk.second_project.entity.Medicine;
-import com.belyuk.second_project.entity.Vitamins;
+import com.belyuk.second_project.entity.impl.VitaminsImpl;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -35,9 +35,8 @@ public class MedicineDomBuilder {
   private static final String SOLUBILITY = "solubility";
   private static final String SERIAL = "serial";
   private static final String DATE_PATTERN = "dd.MM.yyyy";
-
-
-
+  private static final String VITAMINS = "vitamins";
+  private static final String ANTIBIOTICS = "antibiotics";
 
   public MedicineDomBuilder() {
     medicineSet = new HashSet<Medicine>();
@@ -60,55 +59,57 @@ public class MedicineDomBuilder {
       Element root = document.getDocumentElement();
       NodeList medicineList = root.getElementsByTagName(elementName);
       for (int i = 0; i < medicineList.getLength(); i++) {
-        Element antibioticsElement = (Element) medicineList.item(i);
-        Antibiotics antibiotics = buildAntibiotics(antibioticsElement);
-        medicineSet.add(antibiotics);
+        Element medicineElement = (Element) medicineList.item(i);
+        if (medicineElement.getTagName().equals(VITAMINS)) {
+          Medicine medicine = buildVitamins(medicineElement);
+          medicineSet.add(medicine);
+        }
+        if (medicineElement.getTagName().equals(ANTIBIOTICS)) {
+          Medicine medicine = buildAntibiotics(medicineElement);
+          medicineSet.add(medicine);
+        }
       }
-    } catch (SAXException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
+    } catch (SAXException | IOException e) {
       e.printStackTrace();
     }
 
   }
 
-  private Antibiotics buildAntibiotics(Element antibioticsElement) {
-    Antibiotics antibiotics = new Antibiotics();
-    antibiotics.setName(getElementTextContent(antibioticsElement, NAME));
-    antibiotics.setManufacturer(getElementTextContent(antibioticsElement, MANUFACTURER));
-    antibiotics.setDosageForm(getElementTextContent(antibioticsElement, DOSAGE_FORM));
-    antibiotics.setAmount(Integer.parseInt(getElementTextContent(antibioticsElement, AMOUNT)));
-    antibiotics.setId(antibioticsElement.getAttribute(ID));
-    antibiotics.setDosage(getElementTextContent(antibioticsElement, DOSAGE));
-    antibiotics.setPrice(getElementBigDecimalContent(antibioticsElement, PRICE));
-    antibiotics.setMedCertificateIssueDate(getElementDateContent(antibioticsElement, ISSUE_DATE));
-    antibiotics.setMedCertificateExpiryDate(
-        getElementDateContent(antibioticsElement, EXPIRY_DATE));
-
-    return antibiotics;
+  private Medicine buildVitamins(Element medicineElement) {
+    VitaminsImpl vitamins = new VitaminsImpl();
+    vitamins.setName(getElementTextContent(medicineElement, NAME));
+    vitamins.setManufacturer(getElementTextContent(medicineElement, MANUFACTURER));
+    vitamins.setDosageForm(getElementTextContent(medicineElement, DOSAGE_FORM));
+    vitamins.setAmount(Integer.parseInt(getElementTextContent(medicineElement, AMOUNT)));
+    vitamins.setId(medicineElement.getAttribute(ID));
+    vitamins.setDosage(getElementTextContent(medicineElement, DOSAGE));
+    vitamins.setPrice(getElementBigDecimalContent(medicineElement, PRICE));
+    vitamins.setMedCertificateIssueDate(getElementDateContent(medicineElement, ISSUE_DATE));
+    vitamins.setMedCertificateExpiryDate(
+        getElementDateContent(medicineElement, EXPIRY_DATE));
+    vitamins.setSerial(medicineElement.getAttribute(SERIAL));
+    return vitamins;
   }
 
-  private Vitamins buildVitamins(Element vitaminsElement) {
-    Vitamins vitamins = new Vitamins();
-    vitamins.setName(getElementTextContent(vitaminsElement, NAME));
-    vitamins.setManufacturer(getElementTextContent(vitaminsElement, MANUFACTURER));
-    vitamins.setDosageForm(getElementTextContent(vitaminsElement, DOSAGE_FORM));
-    vitamins.setAmount(Integer.parseInt(getElementTextContent(vitaminsElement, AMOUNT)));
-    vitamins.setId(vitaminsElement.getAttribute(ID));
-    vitamins.setDosage(getElementTextContent(vitaminsElement, DOSAGE));
-    vitamins.setPrice(getElementBigDecimalContent(vitaminsElement, PRICE));
-    vitamins.setMedCertificateIssueDate(getElementDateContent(vitaminsElement, ISSUE_DATE));
-    vitamins.setMedCertificateExpiryDate(getElementDateContent(vitaminsElement, EXPIRY_DATE));
-    vitamins.setSolubility(getElementTextContent(vitaminsElement, SOLUBILITY));
-    vitamins.setSerial(vitaminsElement.getAttribute(SERIAL));
-    return vitamins;
+  private Medicine buildAntibiotics(Element medicineElement) {
+    AntibioticsImpl antibiotics = new AntibioticsImpl();
+    antibiotics.setName(getElementTextContent(medicineElement, NAME));
+    antibiotics.setManufacturer(getElementTextContent(medicineElement, MANUFACTURER));
+    antibiotics.setDosageForm(getElementTextContent(medicineElement, DOSAGE_FORM));
+    antibiotics.setAmount(Integer.parseInt(getElementTextContent(medicineElement, AMOUNT)));
+    antibiotics.setId(medicineElement.getAttribute(ID));
+    antibiotics.setDosage(getElementTextContent(medicineElement, DOSAGE));
+    antibiotics.setPrice(getElementBigDecimalContent(medicineElement, PRICE));
+    antibiotics.setMedCertificateIssueDate(getElementDateContent(medicineElement, ISSUE_DATE));
+    antibiotics.setMedCertificateExpiryDate(
+        getElementDateContent(medicineElement, EXPIRY_DATE));
+    return antibiotics;
   }
 
   private static String getElementTextContent(Element element, String elementName) {
     NodeList nList = element.getElementsByTagName(elementName);
     Node node = nList.item(0);
-    String text = node.getTextContent();
-    return text;
+    return node.getTextContent();
   }
 
   private static Date getElementDateContent(Element element, String elementName) {
@@ -127,7 +128,6 @@ public class MedicineDomBuilder {
   private static BigDecimal getElementBigDecimalContent(Element element, String elementName) {
     NodeList nList = element.getElementsByTagName(elementName);
     Node node = nList.item(0);
-    BigDecimal bigDecimal = new BigDecimal(node.getTextContent());
-    return bigDecimal;
+    return new BigDecimal(node.getTextContent());
   }
 }
